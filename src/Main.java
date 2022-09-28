@@ -28,6 +28,7 @@ public class Main {
         drinkMenu.add(milk);
 //        System.out.println(drinkMenu);
 
+        new Order(cupcakeMenu,drinkMenu);
 
 
 
