@@ -78,14 +78,12 @@ class Cupcake extends Consumables{
 
 class RedVelvet extends Cupcake{
     public  void type(){
-
         System.out.println("A red velvet based cupcake, with cream cheese frosting.");
     }
 }
 
 class Chocolate extends Cupcake{
     public  void type(){
-
         System.out.println("A chocolate based cupcake, with chocolate frosting.");
     }
 }
@@ -98,15 +96,13 @@ class Drink extends Consumables{
 }
 
 class Soda extends Drink {
-    public void type()
-    {
+    public void type() {
         System.out.println("A bottle of soda.");
     }
 }
 
 class Milk extends Drink {
-    public void type()
-    {
+    public void type() {
         System.out.println("A bottle of milk.");
     }
 }

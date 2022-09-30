@@ -1,3 +1,4 @@
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -63,6 +64,58 @@ public class Order {
             }
 
 
+        }
+
+        System.out.println(order.get(0));
+        System.out.println(order.get(1));
+
+        double subTotal = 0.0;
+
+        for (int i = 2; i < order.size() ; i++) {
+            if(cupcakeMenu.contains(order.get(i))){
+                int index = cupcakeMenu.indexOf(order.get(i));
+                cupcakeMenu.get(index).type();
+                subTotal += cupcakeMenu.get(index).getPrice();
+            } else if(drinkMenu.contains(order.get(i))){
+                int index = drinkMenu.indexOf(order.get(i));
+                drinkMenu.get(index).type();
+                subTotal += drinkMenu.get(index).getPrice();
+            }
+        }
+        System.out.println("$" + subTotal + "\n");
+        new CreateFile();
+        new WriteToFile(order);
+    }
+}
+
+class CreateFile {
+    public CreateFile() {
+        try {
+            File salesData = new File("salesData.txt");
+            if(salesData.createNewFile()){
+                System.out.println("File created: " + salesData.getName());
+            } else{
+                System.out.println("File already exists");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred");
+        }
+    }
+}
+
+class WriteToFile {
+    public WriteToFile(ArrayList<Object> order) {
+        try {
+            FileWriter fw = new FileWriter("salesData.txt", true);
+            PrintWriter salesWriter = new PrintWriter(fw);
+            for (int i = 0; i <order.size() ; i++) {
+                salesWriter.println(order.get(i));
+            }
+            salesWriter.close();
+            System.out.println("Successfully wrote to the file");
+
+        } catch (IOException e) {
+            System.out.println("An error occurred");
         }
     }
 }
